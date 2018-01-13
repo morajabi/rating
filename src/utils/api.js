@@ -1,6 +1,7 @@
+const token = 'askdnasksdlnd'
 const apiBase = `https://api-fknaanjgow.now.sh`
 const headers = {
-  Authorization: 'Bearer sadewsasdfswesfds',
+  Authorization: `Bearer ${token}`,
   'Content-type': 'application/json',
 }
 
