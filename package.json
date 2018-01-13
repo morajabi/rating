@@ -5,7 +5,13 @@
   "dependencies": {
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
-    "react-scripts": "1.0.17"
+    "react-scripts": "1.0.17",
+    "styled-components": "^2.4.0"
+  },
+  "devDependencies": {
+    "prettier": "^1.10.2",
+    "react-app-rewire-styled-components": "^3.0.0",
+    "react-app-rewired": "^1.4.0"
   },
   "prettier": {
     "semi": false,
@@ -17,10 +23,5 @@
     "build": "react-app-rewired build",
     "test": "react-app-rewired test --env=jsdom",
     "eject": "react-scripts eject"
-  },
-  "devDependencies": {
-    "prettier": "^1.10.2",
-    "react-app-rewire-styled-components": "^3.0.0",
-    "react-app-rewired": "^1.4.0"
   }
 }
