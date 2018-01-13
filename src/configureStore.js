@@ -3,7 +3,7 @@ import { composeWithDevTools } from 'redux-devtools-extension'
 import createSagaMiddleware from 'redux-saga'
 import logger from 'redux-logger'
 
-import rootReducer, { mySaga } from './modules'
+import rootReducer, { rootSaga } from './modules'
 
 const configureStore = () => {
   const sagaMiddleware = createSagaMiddleware()
@@ -21,7 +21,7 @@ const configureStore = () => {
   }
 
   // run the saga
-  sagaMiddleware.run(mySaga)
+  sagaMiddleware.run(rootSaga)
 
   return store
 }

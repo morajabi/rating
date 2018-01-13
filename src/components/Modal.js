@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
 import { rem } from '../utils/rem'
@@ -6,11 +7,28 @@ import ModalCloseBtn from './ModalCloseBtn'
 import Rate from '../containers/Rate'
 
 class Modal extends Component {
+  constructor(p) {
+    super(p)
+    this.overlayRef = null
+  }
+
+  static propTypes = {
+    ratingDisabled: PropTypes.bool,
+    onClose: PropTypes.func.isRequired,
+  }
+
   render() {
+    const { ratingDisabled, onClose } = this.props
+
     return (
-      <Overlay>
+      <Overlay
+        innerRef={o => {
+          this.overlayRef = o
+        }}
+        onClick={this.overlayClicked}
+      >
         <Wrapper>
-          <CloseWrapper>
+          <CloseWrapper onClick={onClose}>
             <ModalCloseBtn />
           </CloseWrapper>
           <TopBar>
@@ -18,11 +36,18 @@ class Modal extends Component {
             friend or colleague?
           </TopBar>
           <Content>
-            <Rate />
+            <Rate disabled={ratingDisabled} />
           </Content>
         </Wrapper>
       </Overlay>
     )
+  }
+
+  overlayClicked = e => {
+    // Stop closing when click is from a children node
+    if (e.target === this.overlayRef) {
+      this.props.onClose()
+    }
   }
 }
 

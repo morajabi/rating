@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import { connect } from 'react-redux'
+import PropTypes from 'prop-types'
 
 import {
   setRating,
@@ -9,10 +10,19 @@ import {
   setRatingAndSubmit,
   getRating,
   getActiveRate,
+  requestSubmitRating,
 } from '../modules'
 import StarRadio from '../components/StarRadio'
 
 class Rate extends Component {
+  static propTypes = {
+    disabled: PropTypes.bool,
+  }
+
+  static defaultProps = {
+    disabled: false,
+  }
+
   constructor(p) {
     super(p)
     this.numbers = this.generateNumbersArray()
@@ -32,10 +42,10 @@ class Rate extends Component {
   }
 
   render() {
-    const { rating, activeRate } = this.props
+    const { rating, activeRate, disabled } = this.props
 
     return (
-      <Wrapper onSubmit={this.submitted}>
+      <Wrapper onSubmit={this.submitted} disabled={disabled}>
         <div role="radiogroup">
           {this.numbers.map(num => (
             <StarRadio
@@ -43,6 +53,7 @@ class Rate extends Component {
               name="rate"
               id={`rate-radio-${num}`}
               number={num}
+              disabled={disabled}
               checked={rating === num}
               active={activeRate !== null && activeRate >= num}
               onClick={this.onRadioClick}
@@ -87,7 +98,8 @@ class Rate extends Component {
       e.preventDefault()
     }
 
-    console.log('Form Submitted!')
+    this.props.requestSubmitRating()
+    console.log('Rate form submit triggered!')
 
     return false
   }
@@ -103,10 +115,17 @@ export default connect(
     setActiveRate,
     setActiveRateToRating,
     setRatingAndSubmit,
+    requestSubmitRating,
   },
 )(Rate)
 
-const Wrapper = styled.form``
+const Wrapper = styled.form`
+  ${p =>
+    p.disabled &&
+    css`
+      opacity: 0.4;
+    `};
+`
 const SubmitButton = styled.input`
   position: absolute;
   left: -9999px;

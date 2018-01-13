@@ -1,6 +1,6 @@
 const apiBase = `https://api-fknaanjgow.now.sh`
 const headers = {
-  Authorization: 'Bearer sdfklmdsmfs2',
+  Authorization: 'Bearer sadewsasdfswesfds',
   'Content-type': 'application/json',
 }
 
@@ -8,7 +8,12 @@ export const getRating = () =>
   fetch(`${apiBase}/feedback/rating`, {
     method: 'GET',
     headers,
-  }).then(res => res.json())
+  }).then(res => {
+    if (res.status === 404) {
+      return { error: 'no rating' }
+    }
+    return res.json()
+  })
 
 /**
  * Submit rating
@@ -33,4 +38,6 @@ export const getClosedPreference = () =>
   fetch(`${apiBase}/feedback/closed`, {
     method: 'GET',
     headers,
+  }).then(res => {
+    return res.json()
   })

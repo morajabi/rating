@@ -1,18 +1,46 @@
 import React, { Component, Fragment } from 'react'
 import { connect } from 'react-redux'
 
-import { closeModal, getIsModalOpen, getIsStatusLoading } from '../modules'
+import {
+  closeModal,
+  requestStatus,
+  getIsSubmitRatingLoading,
+  getIsModalOpen,
+  getIsStatusLoading,
+  getStatusError,
+} from '../modules'
 import Modal from './Modal'
-import { Loading, RandomMessage } from './Messages'
+import { Loading, Error, RandomMessage } from './Messages'
 
 class App extends Component {
+  componentDidMount() {
+    this.props.requestStatus()
+  }
+
   render() {
-    const { isModalOpen, isStatusLoading } = this.props
+    const {
+      isModalOpen,
+      isStatusLoading,
+      statusError,
+      isSubmitRatingLoading,
+    } = this.props
 
     return (
       <Fragment>
-        {isStatusLoading ? <Loading /> : <RandomMessage />}
-        {isModalOpen && <Modal onClose={this.modalClosed} />}
+        {isStatusLoading ? (
+          <Loading />
+        ) : statusError ? (
+          <Error />
+        ) : (
+          <RandomMessage />
+        )}
+
+        {isModalOpen && (
+          <Modal
+            onClose={this.modalClosed}
+            ratingDisabled={isSubmitRatingLoading}
+          />
+        )}
       </Fragment>
     )
   }
@@ -26,8 +54,11 @@ export default connect(
   state => ({
     isModalOpen: getIsModalOpen(state),
     isStatusLoading: getIsStatusLoading(state),
+    statusError: getStatusError(state),
+    isSubmitRatingLoading: getIsSubmitRatingLoading(state),
   }),
   {
     closeModal,
+    requestStatus,
   },
 )(App)

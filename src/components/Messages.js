@@ -22,6 +22,9 @@ const Thanks = () => <Wrapper>Thanks for your time Michal! 🙏✨</Wrapper>
 const Love = () => <Wrapper>I ❤️ H5 and you</Wrapper>
 
 export const Loading = () => <Wrapper>👀 Loading ...</Wrapper>
+export const Error = () => (
+  <Wrapper>😿 Network error! You may check the console & network tab.</Wrapper>
+)
 export const RandomMessage = () => {
   const messages = [WhatsUp, HowAreYou, Thanks, Love]
   const randomInt = Math.floor(Math.random() * (3 - 0 + 1)) + 0

@@ -1,5 +1,7 @@
-import { take } from 'redux-saga/effects'
+import { put, call, select, all, take } from 'redux-saga/effects'
 import produce from 'immer'
+
+import * as api from '../utils/api'
 
 // Action Types
 // - modal
@@ -25,15 +27,14 @@ const STATUS_FAILED = 'STATUS_FAILED'
 // Reducer
 const initialState = {
   // local
-  rating: 5,
-  activeRate: 5,
+  rating: null,
+  activeRate: null,
   isModalOpen: false,
 
   // remote
   status: {
     closedPreference: null,
     rating: null,
-    hasRated: null,
     loading: false,
     error: null,
   },
@@ -47,6 +48,13 @@ const initialState = {
 const reducer = (state = initialState, action) =>
   produce(state, draft => {
     switch (action.type) {
+      case MODAL_OPENED:
+        draft.isModalOpen = true
+        break
+      case MODAL_CLOSED:
+        draft.isModalOpen = false
+        break
+
       case RATING_CHANGED:
         draft.rating = draft.activeRate = action.rating
         break
@@ -61,24 +69,23 @@ const reducer = (state = initialState, action) =>
 
       case RATING_CHANGED_AND_SUBMIT_REQUESTED:
         draft.rating = draft.activeRate = action.rating
-        draft.modalStatus.loading = true
+        draft.submitRating.loading = true
         break
 
       // ---
       case STATUS_REQUESTED:
-        draft.modalStatus.loading = true
-        draft.modalStatus.error = null
+        draft.status.loading = true
+        draft.status.error = null
         break
       case STATUS_SUCCEEDED:
         draft.status.loading = false
         draft.status.closedPreference = action.closedPreference
         draft.status.rating = action.rating
-        draft.status.hasRated = typeof action.rating !== 'number'
         break
       case STATUS_FAILED:
-        draft.modalStatus.loading = false
-        draft.ratingStatus.hasRated = false
-        draft.modalStatus.error = action.error
+        draft.status.loading = false
+        draft.status.rating = null
+        draft.status.error = action.error
         break
 
       // ---
@@ -89,11 +96,13 @@ const reducer = (state = initialState, action) =>
       case SUBMIT_RATING_SUCCEEDED:
         draft.submitRating.loading = false
         draft.submitRating.done = true
+        draft.isModalOpen = false
         break
       case SUBMIT_RATING_FAILED:
         draft.submitRating.loading = false
         draft.submitRating.error = action.error
         draft.submitRating.done = false
+        draft.isModalOpen = false
         break
 
       default:
@@ -175,7 +184,69 @@ export const getSubmitRatingError = state => state.submitRating.error
 
 // ---
 // Sagas
-export function* mySaga() {
-  yield take(RATING_CHANGED)
-  console.log('Yielded.')
+export function* rootSaga() {
+  yield all([
+    getStatusSaga(),
+    setClosedSaga(),
+    submitRatingSaga(),
+    setAndSubmitRatingSaga(),
+  ])
+}
+
+function* getStatusSaga() {
+  while (true) {
+    try {
+      yield take(STATUS_REQUESTED)
+      const [{ closed }, { rating }] = yield all([
+        call(api.getClosedPreference),
+        call(api.getRating),
+      ])
+      console.log('Inital status saga success', [closed, rating])
+      yield put(statusSucceeded(closed, rating))
+      if (typeof rating !== 'number' && !closed) {
+        yield put(openModal())
+      }
+    } catch (error) {
+      console.log('Initial status saga error', error)
+      yield put(statusFailed(error))
+    }
+  }
+}
+
+function* setClosedSaga() {
+  while (true) {
+    try {
+      yield take(MODAL_CLOSED)
+      yield call(api.setClosed)
+    } catch (error) {
+      console.log('Modal close saga error', error)
+    }
+  }
+}
+
+function* submitRatingSaga() {
+  while (true) {
+    try {
+      yield take(SUBMIT_RATING_REQUESTED)
+      const rating = yield select(getRating)
+      yield call(api.setRating, rating)
+      yield put(submitRatingSucceeded())
+    } catch (error) {
+      console.log('Submit rating saga error', error)
+      yield put(submitRatingFailed(error))
+    }
+  }
+}
+
+function* setAndSubmitRatingSaga() {
+  while (true) {
+    try {
+      const { rating } = yield take(RATING_CHANGED_AND_SUBMIT_REQUESTED)
+      yield call(api.setRating, rating)
+      yield put(submitRatingSucceeded())
+    } catch (error) {
+      console.log('Submit rating saga error', error)
+      yield put(submitRatingFailed(error))
+    }
+  }
 }
