@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import styled from 'styled-components'
 
 import { rem } from '../utils/rem'
-import { Cross } from '../components/Svgs'
 import ModalCloseBtn from './ModalCloseBtn'
 import Rate from './Rate'
 
