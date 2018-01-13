@@ -13,6 +13,8 @@ injectGlobal`
     overflow-y: auto;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+
+    color: #333;
   }
 
   *, *:before, *:after {
