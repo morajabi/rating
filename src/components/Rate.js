@@ -28,6 +28,7 @@ class Rate extends Component {
         <div role="radiogroup">
           {this.numbers.map(num => (
             <StarRadio
+              key={num}
               name="rate"
               id={`rate-radio-${num}`}
               number={num}
