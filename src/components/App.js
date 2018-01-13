@@ -1,16 +1,13 @@
 import React, { Component } from 'react'
-import styled from 'styled-components'
-
-const Wrapper = styled.div`
-  color: green;
-`
+import Modal from './Modal'
 
 class App extends Component {
   render() {
     return (
-      <Wrapper>
+      <div>
         <h1>Welcome to React</h1>
-      </Wrapper>
+        <Modal />
+      </div>
     )
   }
 }
