@@ -27,6 +27,7 @@ class App extends Component {
 
     return (
       <Fragment>
+        {/* Loading, error or some random messages */}
         {isStatusLoading ? (
           <Loading />
         ) : statusError ? (
@@ -35,6 +36,7 @@ class App extends Component {
           <RandomMessage />
         )}
 
+        {/* Modal */}
         {isModalOpen && (
           <Modal
             onClose={this.modalClosed}
