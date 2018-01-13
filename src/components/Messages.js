@@ -10,6 +10,8 @@ const Wrapper = styled.span`
   display: flex;
   justify-content: center;
   align-items: center;
+
+  text-align: center;
   font-size: ${rem(40)};
   font-weight: bold;
   color: #888;
