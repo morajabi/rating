@@ -1,7 +1,16 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
+import { connect } from 'react-redux'
 
-import StarRadio from './StarRadio'
+import {
+  setRating,
+  setActiveRate,
+  setActiveRateToRating,
+  setRatingAndSubmit,
+  getRating,
+  getActiveRate,
+} from '../modules'
+import StarRadio from '../components/StarRadio'
 
 class Rate extends Component {
   constructor(p) {
@@ -16,13 +25,15 @@ class Rate extends Component {
 
   generateNumbersArray() {
     let numbers = []
-    for (let i = 1; i <= 10; i++) {
+    for (let i = 0; i <= 10; i++) {
       numbers.push(i)
     }
     return numbers
   }
 
   render() {
+    const { rating, activeRate } = this.props
+
     return (
       <Wrapper onSubmit={this.submitted}>
         <div role="radiogroup">
@@ -32,8 +43,8 @@ class Rate extends Component {
               name="rate"
               id={`rate-radio-${num}`}
               number={num}
-              checked={this.state.checked === num}
-              active={this.state.active && this.state.active >= num}
+              checked={rating === num}
+              active={activeRate !== null && activeRate >= num}
               onClick={this.onRadioClick}
               onMouseEnter={this.onRadioMouseEnter}
               onMouseLeave={this.onRadioMouseLeave}
@@ -47,29 +58,28 @@ class Rate extends Component {
   }
 
   setCheckedAndActive = num => {
-    this.setState({ checked: num, active: num })
+    this.props.setRating(num)
   }
 
   onRadioClick = (num, inputRef) => {
-    this.setCheckedAndActive(num)
+    this.props.setRatingAndSubmit(num)
     if (inputRef) {
       inputRef.focus()
     }
-    // Submit form
-    this.submitted()
   }
 
   onRadioMouseEnter = num => {
-    this.setState({ active: num })
+    this.props.setActiveRate(num)
   }
 
   onRadioMouseLeave = () => {
-    this.setState(prev => ({ active: prev.checked }))
+    // Reset active to the current selected rating
+    this.props.setActiveRateToRating()
   }
 
   onRadioInputChange = e => {
-    // This event is triggered from radio input (wit keyboard or screenreader)
-    this.setCheckedAndActive(Number(e.target.value))
+    // This event is triggered from radio input (with keyboard or screenreader)
+    this.props.setRating(Number(e.target.value))
   }
 
   submitted = e => {
@@ -83,7 +93,18 @@ class Rate extends Component {
   }
 }
 
-export default Rate
+export default connect(
+  state => ({
+    rating: getRating(state),
+    activeRate: getActiveRate(state),
+  }),
+  {
+    setRating,
+    setActiveRate,
+    setActiveRateToRating,
+    setRatingAndSubmit,
+  },
+)(Rate)
 
 const Wrapper = styled.form``
 const SubmitButton = styled.input`

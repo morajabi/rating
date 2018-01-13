@@ -3,7 +3,7 @@ import styled from 'styled-components'
 
 import { rem } from '../utils/rem'
 import ModalCloseBtn from './ModalCloseBtn'
-import Rate from './Rate'
+import Rate from '../containers/Rate'
 
 class Modal extends Component {
   render() {
