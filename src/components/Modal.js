@@ -3,20 +3,24 @@ import styled from 'styled-components'
 
 import { rem } from '../utils/rem'
 import { Cross } from '../components/Svgs'
+import ModalCloseBtn from './ModalCloseBtn'
+import Rate from './Rate'
 
 class Modal extends Component {
   render() {
     return (
       <Overlay>
         <Wrapper>
-          <CloseButton>
-            <Cross />
-          </CloseButton>
+          <CloseWrapper>
+            <ModalCloseBtn />
+          </CloseWrapper>
           <TopBar>
             How likely are you to recommend <strong>Hunderd5</strong> to a
             friend or colleague?
           </TopBar>
-          <Content />
+          <Content>
+            <Rate />
+          </Content>
         </Wrapper>
       </Overlay>
     )
@@ -64,7 +68,7 @@ const TopBar = styled.div`
 
   border-radius: ${radius} ${radius} 0 0;
   background: rgb(253, 214, 224);
-  color: rgb(92, 46, 140);
+  color: rgb(66, 38, 95);
 `
 
 const Content = styled.div`
@@ -73,31 +77,8 @@ const Content = styled.div`
   text-align: center;
 `
 
-const CloseButton = styled.button`
+const CloseWrapper = styled.span`
   position: absolute;
   top: ${rem(5)};
   right: ${rem(5)};
-
-  padding: 7px;
-  vertical-align: middle;
-  line-height: 1;
-
-  opacity: 0.6;
-  border-radius: 5px;
-  background: none;
-  border: none;
-  cursor: pointer;
-
-  transition: background 150ms, opacity 150ms;
-
-  &:hover,
-  &:focus {
-    background: rgba(0, 0, 0, 0.07);
-    opacity: 1;
-  }
-
-  &:focus {
-    outline: none;
-    box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.3);
-  }
 `
