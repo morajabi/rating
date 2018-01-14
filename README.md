@@ -56,7 +56,7 @@ Factors like "parse time" have a noticable impact on that. There's a good articl
 
 Also, don't forget the code is gonna be maintained by humans not bundlers! Sometimes I won't sacrifice developer experince for a couple of bytes! I'd thank myself later! 😉
 
-## Stretch goals
+## Stretch goals (AKA What I'd do next)
 
 ### Use React Portals for rendering the modal
 
