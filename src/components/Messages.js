@@ -4,7 +4,7 @@ import styled from 'styled-components'
 
 import { rem } from '../utils/rem'
 
-const Wrapper = styled.span`
+export const Message = styled.span`
   width: 100%;
   padding: 100px 20px;
   display: flex;
@@ -18,14 +18,14 @@ const Wrapper = styled.span`
   opacity: 0.8;
 `
 
-const WhatsUp = () => <Wrapper>👋 What's up Michal?</Wrapper>
-const HowAreYou = () => <Wrapper>How are you Michal? 🙂</Wrapper>
-const Thanks = () => <Wrapper>Thanks for your time Michal! 🙏✨</Wrapper>
-const Love = () => <Wrapper>I ❤️ H5 and you</Wrapper>
+const WhatsUp = () => <Message>👋 What's up Michal?</Message>
+const HowAreYou = () => <Message>How are you Michal? 🙂</Message>
+const Thanks = () => <Message>Thanks for your time Michal! 🙏✨</Message>
+const Love = () => <Message>I ❤️ H5 and you</Message>
 
-export const Loading = () => <Wrapper>👀 Loading ...</Wrapper>
+export const Loading = () => <Message>👀 Loading ...</Message>
 export const Error = () => (
-  <Wrapper>😿 Network error! You may check the console & network tab.</Wrapper>
+  <Message>😿 Network error! You may check the console & network tab.</Message>
 )
 export const RandomMessage = () => {
   const messages = [WhatsUp, HowAreYou, Thanks, Love]

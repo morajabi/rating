@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 
+import { Message } from './Messages'
+
 class ErrorHandler extends Component {
   state = {
     hasError: false,
@@ -12,12 +14,12 @@ class ErrorHandler extends Component {
 
   render() {
     return this.state.hasError ? (
-      <h1 style={{ padding: 20 }}>
+      <Message>
         Something went wront{' '}
         <span role="img" aria-label="crying face">
           ☹️
         </span>
-      </h1>
+      </Message>
     ) : (
       this.props.children
     )
