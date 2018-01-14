@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
 import { rem } from '../utils/rem'
-import { StarDefault, StarActive } from '../components/Svgs'
+import { StarDefault, StarActive } from '../components/Svgs/Star'
 
 class StarRadio extends Component {
   constructor(p) {

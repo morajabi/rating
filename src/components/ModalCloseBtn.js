@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
 
-import { Cross } from '../components/Svgs'
+import Cross from '../components/Svgs/Cross'
 
 class ModalCloseBtn extends Component {
   render() {
