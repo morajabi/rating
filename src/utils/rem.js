@@ -5,4 +5,4 @@ export const BASE_FONT_SIZE = 16
  *
  * @param {number} pxValue - Pixel value as a number
  */
-export const rem = pxValue => String(pxValue / BASE_FONT_SIZE) + 'rem'
+export const rem = pxValue => `${pxValue / BASE_FONT_SIZE}rem`
