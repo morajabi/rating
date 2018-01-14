@@ -1,4 +1,4 @@
-const token = 'askdnasksdlnd'
+const token = 'askdnasksdswslnd'
 const apiBase = `https://api-fknaanjgow.now.sh`
 const headers = {
   Authorization: `Bearer ${token}`,

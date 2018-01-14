@@ -63,3 +63,9 @@ Also, don't forget the code is gonna be maintained by humans not bundlers! Somet
 We may need to use React 16 Portals feature to render modal, when a parent container is clipping the modal.
 
 More information with a real world example: https://www.nearform.com/blog/exploring-react-portals/
+
+### Write unit tests for action creators -> reducers -> selectors
+
+A bigger codebase with more actions and therefore more complicated store architecture would require at least basic unit testing to ensure the flow is working as intended.
+
+It also gives you more confidence in refactoring the state shape as an example.
