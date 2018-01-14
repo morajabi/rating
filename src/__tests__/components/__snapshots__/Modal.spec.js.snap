@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Modal renders as expected 1`] = `
+<styled.div
+  innerRef={[Function]}
+  onClick={[Function]}
+>
+  <styled.div>
+    <styled.span
+      onClick={[Function]}
+    >
+      <ModalCloseBtn />
+    </styled.span>
+    <styled.div>
+      How likely are you to recommend 
+      <strong>
+        Hunderd5
+      </strong>
+       to a friend or colleague?
+    </styled.div>
+    <styled.div>
+      <Connect(Rate) />
+    </styled.div>
+  </styled.div>
+</styled.div>
+`;

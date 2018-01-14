@@ -3,7 +3,7 @@ import { Provider } from 'react-redux'
 
 import configureStore from '../configureStore'
 import ErrorHandler from '../components/ErrorHandler'
-import App from '../components/App'
+import App from './App'
 
 // Create redux store
 const store = configureStore()

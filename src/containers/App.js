@@ -9,8 +9,8 @@ import {
   getIsStatusLoading,
   getStatusError,
 } from '../modules'
-import Modal from './Modal'
-import { Loading, Error, RandomMessage } from './Messages'
+import Modal from '../components/Modal'
+import { Loading, Error, RandomMessage } from '../components/Messages'
 
 class App extends Component {
   componentDidMount() {

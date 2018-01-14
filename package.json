@@ -15,15 +15,25 @@
     "styled-components": "^2.4.0"
   },
   "devDependencies": {
+    "enzyme": "^3.3.0",
+    "enzyme-adapter-react-16": "^1.1.1",
+    "enzyme-to-json": "^3.3.0",
+    "jest-styled-components": "^4.10.0",
     "prettier": "^1.10.2",
     "react-app-rewire-styled-components": "^3.0.0",
     "react-app-rewired": "^1.4.0",
+    "react-test-renderer": "^16.2.0",
     "redux-devtools-extension": "^2.13.2"
   },
   "prettier": {
     "semi": false,
     "singleQuote": true,
     "trailingComma": "all"
+  },
+  "jest": {
+    "snapshotSerializers": [
+      "enzyme-to-json/serializer"
+    ]
   },
   "scripts": {
     "start": "react-app-rewired start",
