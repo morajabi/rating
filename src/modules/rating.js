@@ -18,12 +18,12 @@ const SUBMIT_REQUESTED = 'h5/rate/SUBMIT_REQUESTED'
 const SUBMIT_SUCCEEDED = 'h5/rate/SUBMIT_SUCCEEDED'
 const SUBMIT_FAILED = 'h5/rate/SUBMIT_FAILED'
 
-const HAS_RATED_REQUESTED = 'h5/rate/HAS_RATED_REQUESTED'
-const HAS_RATED_SUCCEEDED = 'h5/rate/HAS_RATED_SUCCEEDED'
-const HAS_RATED_FAILED = 'h5/rate/HAS_RATED_FAILED'
+export const HAS_RATED_REQUESTED = 'h5/rate/HAS_RATED_REQUESTED'
+export const HAS_RATED_SUCCEEDED = 'h5/rate/HAS_RATED_SUCCEEDED'
+export const HAS_RATED_FAILED = 'h5/rate/HAS_RATED_FAILED'
 
 // Reducer
-const initialState = {
+export const initialState = {
   rating: null,
   activeRate: null,
 

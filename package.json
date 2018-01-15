@@ -24,7 +24,8 @@
     "react-app-rewire-styled-components": "^3.0.0",
     "react-app-rewired": "^1.4.0",
     "react-test-renderer": "^16.2.0",
-    "redux-devtools-extension": "^2.13.2"
+    "redux-devtools-extension": "^2.13.2",
+    "redux-saga-tester": "^1.0.378"
   },
   "prettier": {
     "semi": false,
