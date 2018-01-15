@@ -46,7 +46,11 @@ class Rate extends Component {
 
     return (
       <Wrapper onSubmit={this.submitted} disabled={disabled}>
-        <div role="radiogroup">
+        <div
+          role="radiogroup"
+          aria-describedby="rate-modal-question"
+          aria-label="Rate Hundred5 from 0 to 10"
+        >
           {this.numbers.map(num => (
             <StarRadio
               key={num}

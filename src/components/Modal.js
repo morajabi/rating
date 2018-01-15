@@ -12,16 +12,24 @@ class Modal extends Component {
     onClose: PropTypes.func.isRequired,
   }
 
+  componentDidMount() {
+    window.addEventListener('keydown', this.onKeyDown, false)
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('keydown', this.onKeyDown, false)
+  }
+
   render() {
     const { ratingDisabled, onClose } = this.props
 
     return (
       <Overlay>
-        <Wrapper>
+        <Wrapper aria-modal="true" aria-label="Rate Hundred5">
           <CloseWrapper onClick={onClose}>
             <ModalCloseBtn />
           </CloseWrapper>
-          <TopBar>
+          <TopBar id="rate-modal-question">
             How likely are you to recommend <strong>Hunderd5</strong> to a
             friend or colleague?
           </TopBar>
@@ -31,6 +39,12 @@ class Modal extends Component {
         </Wrapper>
       </Overlay>
     )
+  }
+
+  onKeyDown = e => {
+    if (e.keyCode === 27) {
+      this.props.onClose()
+    }
   }
 }
 
