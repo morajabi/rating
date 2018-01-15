@@ -13,6 +13,8 @@ This project is created by the awesome `create-react-app`.
 * **Immer** to update state in reducers with a maintainable and eaier to read approach
 * **styled-components** for styling in a way that is component-based structure friendly and scalable
 
+> Note: I didn't disable logs, so it's easier to see what's happening for you when testing.
+
 ## How can we reduce bundle size?
 
 Analyzing codebase, swapping dependencies, tweaking configs, reducing the bundle, validating result, and iterating this process can be a tedious task.
