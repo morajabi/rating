@@ -1,20 +1,40 @@
-const token = 'askdnasadslw32eionnd'
+const token = 'askdnasadslw32eio2easdascsd2nnd'
 const apiBase = `https://api-fknaanjgow.now.sh`
 const headers = {
   Authorization: `Bearer ${token}`,
   'Content-type': 'application/json',
 }
 
+const handleStatusError = res => {
+  if (res.ok) {
+    return res
+  }
+  throw new Error(res.status)
+}
+
+const handleStatusErrorExcept404 = res => {
+  if (res.ok || res.status === 404) {
+    return res
+  }
+  throw new Error(res.status)
+}
+
+const bareFetchWrapper = (url, options) =>
+  fetch(apiBase + url, { headers, ...options })
+const fetchWrapper = (...args) =>
+  bareFetchWrapper(...args).then(handleStatusError)
+
 export const getRating = () =>
-  fetch(`${apiBase}/feedback/rating`, {
+  bareFetchWrapper(`/feedback/rating`, {
     method: 'GET',
-    headers,
-  }).then(res => {
-    if (res.status === 404) {
-      return { error: 'no rating' }
-    }
-    return res.json()
   })
+    .then(res => {
+      if (res.ok) {
+        return res.json()
+      }
+      return res
+    })
+    .then(handleStatusErrorExcept404)
 
 /**
  * Submit rating
@@ -22,23 +42,20 @@ export const getRating = () =>
  * @param {number} rating - Rating from 0 to 10
  */
 export const setRating = rating =>
-  fetch(`${apiBase}/feedback/rating`, {
+  fetchWrapper(`/feedback/rating`, {
     method: 'POST',
-    headers,
     body: JSON.stringify({ rating }),
   })
 
 export const setClosed = () =>
-  fetch(`${apiBase}/feedback/closed`, {
+  fetchWrapper(`/feedback/closed`, {
     method: 'PUT',
-    headers,
     body: JSON.stringify({ closed: true }),
   })
 
 export const getClosedPreference = () =>
-  fetch(`${apiBase}/feedback/closed`, {
+  fetchWrapper(`/feedback/closed`, {
     method: 'GET',
-    headers,
   }).then(res => {
     return res.json()
   })
