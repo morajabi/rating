@@ -69,3 +69,7 @@ More information with a real world example: https://www.nearform.com/blog/explor
 A bigger codebase with more actions and therefore more complicated store architecture would require at least basic unit testing to ensure the flow is working as intended.
 
 It also gives you more confidence in refactoring the state shape as an example.
+
+### May use `react-modal` to handle more edge cases if more features added
+
+If we needed to manage focus more complicated or we want to use React Portals without head ache, we could simply use `react-modal`. (Note that it'd increase bundle size by some kilobytes)
