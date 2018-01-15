@@ -195,8 +195,17 @@ export function* getHasRatedSaga() {
   while (true) {
     try {
       yield take(HAS_RATED_REQUESTED)
-      const { rating } = yield call(api.getRating)
-      const hasRated = typeof rating === 'number'
+      const { rating, status } = yield call(api.getRating)
+
+      let hasRated = null
+      if (rating) {
+        hasRated = typeof rating === 'number'
+      } else if (status === 404 || status === 304) {
+        hasRated = false
+      } else {
+        throw new Error(status)
+      }
+
       yield put(hasRatedSucceeded(hasRated))
     } catch (error) {
       console.log('modal/getHasRated saga error', error)

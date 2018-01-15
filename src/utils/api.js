@@ -1,9 +1,12 @@
-const token = 'askdnasadslws2332eio2easdascsd2nnd'
+const getToken = () =>
+  window && typeof localStorage !== 'undefined' && localStorage.getItem('token')
+    ? localStorage.getItem('token')
+    : 'sample_token'
 const apiBase = `https://api-fknaanjgow.now.sh`
-const headers = {
-  Authorization: `Bearer ${token}`,
+const getHeaders = () => ({
+  Authorization: `Bearer ${getToken()}`,
   'Content-type': 'application/json',
-}
+})
 
 const handleStatusError = res => {
   if (res.ok) {
@@ -12,29 +15,20 @@ const handleStatusError = res => {
   throw new Error(res.status)
 }
 
-const handleStatusErrorExcept404 = res => {
-  if (res.ok || res.status === 404) {
-    return res
-  }
-  throw new Error(res.status)
-}
-
 const bareFetchWrapper = (url, options) =>
-  fetch(apiBase + url, { headers, ...options })
+  fetch(apiBase + url, { headers: getHeaders(), ...options })
 const fetchWrapper = (...args) =>
   bareFetchWrapper(...args).then(handleStatusError)
 
 export const getRating = () =>
   bareFetchWrapper(`/feedback/rating`, {
     method: 'GET',
+  }).then(res => {
+    if (res.ok) {
+      return res.json()
+    }
+    return res
   })
-    .then(res => {
-      if (res.ok) {
-        return res.json()
-      }
-      return res
-    })
-    .then(handleStatusErrorExcept404)
 
 /**
  * Submit rating
