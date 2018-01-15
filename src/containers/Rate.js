@@ -10,8 +10,8 @@ import {
   setRatingAndSubmit,
   getRating,
   getActiveRate,
-  requestSubmitRating,
-} from '../modules'
+  requestSubmit,
+} from '../modules/rating'
 import StarRadio from '../components/StarRadio'
 
 class Rate extends Component {
@@ -98,7 +98,7 @@ class Rate extends Component {
       e.preventDefault()
     }
 
-    this.props.requestSubmitRating()
+    this.props.requestSubmit()
     console.log('Rate form submit triggered!')
 
     return false
@@ -115,7 +115,7 @@ export default connect(
     setActiveRate,
     setActiveRateToRating,
     setRatingAndSubmit,
-    requestSubmitRating,
+    requestSubmit,
   },
 )(Rate)
 

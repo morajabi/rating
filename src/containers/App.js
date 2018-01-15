@@ -1,36 +1,37 @@
 import React, { Component, Fragment } from 'react'
 import { connect } from 'react-redux'
 
-import {
-  closeModal,
-  requestStatus,
-  getIsSubmitRatingLoading,
-  getIsModalOpen,
-  getIsStatusLoading,
-  getStatusError,
-} from '../modules'
 import Modal from '../components/Modal'
 import { Loading, Error, RandomMessage } from '../components/Messages'
+import { requestHasRated, getIsSubmitLoading } from '../modules/rating'
+import {
+  requestClosedPref,
+  closeModal,
+  getIsModalOpen,
+  getHasModalError,
+  getIsModalLoading,
+} from '../modules/modal'
 
 class App extends Component {
   componentDidMount() {
-    this.props.requestStatus()
+    this.props.requestHasRated()
+    this.props.requestClosedPref()
   }
 
   render() {
     const {
       isModalOpen,
-      isStatusLoading,
-      statusError,
-      isSubmitRatingLoading,
+      isModalLoading,
+      modalError,
+      isSubmitLoading,
     } = this.props
 
     return (
       <Fragment>
         {/* Loading, error or some random messages */}
-        {isStatusLoading ? (
+        {isModalLoading ? (
           <Loading />
-        ) : statusError ? (
+        ) : modalError ? (
           <Error />
         ) : (
           <RandomMessage />
@@ -38,10 +39,7 @@ class App extends Component {
 
         {/* Modal */}
         {isModalOpen && (
-          <Modal
-            onClose={this.modalClosed}
-            ratingDisabled={isSubmitRatingLoading}
-          />
+          <Modal onClose={this.modalClosed} ratingDisabled={isSubmitLoading} />
         )}
       </Fragment>
     )
@@ -55,12 +53,13 @@ class App extends Component {
 export default connect(
   state => ({
     isModalOpen: getIsModalOpen(state),
-    isStatusLoading: getIsStatusLoading(state),
-    statusError: getStatusError(state),
-    isSubmitRatingLoading: getIsSubmitRatingLoading(state),
+    isModalLoading: getIsModalLoading(state),
+    modalError: getHasModalError(state),
+    isSubmitLoading: getIsSubmitLoading(state),
   }),
   {
     closeModal,
-    requestStatus,
+    requestHasRated,
+    requestClosedPref,
   },
 )(App)
