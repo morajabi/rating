@@ -7,11 +7,6 @@ import ModalCloseBtn from './ModalCloseBtn'
 import Rate from '../containers/Rate'
 
 class Modal extends Component {
-  constructor(p) {
-    super(p)
-    this.overlayRef = null
-  }
-
   static propTypes = {
     ratingDisabled: PropTypes.bool,
     onClose: PropTypes.func.isRequired,
@@ -21,12 +16,7 @@ class Modal extends Component {
     const { ratingDisabled, onClose } = this.props
 
     return (
-      <Overlay
-        innerRef={o => {
-          this.overlayRef = o
-        }}
-        onClick={this.overlayClicked}
-      >
+      <Overlay>
         <Wrapper>
           <CloseWrapper onClick={onClose}>
             <ModalCloseBtn />
@@ -41,13 +31,6 @@ class Modal extends Component {
         </Wrapper>
       </Overlay>
     )
-  }
-
-  overlayClicked = e => {
-    // Stop closing when click is from a children node
-    if (e.target === this.overlayRef) {
-      this.props.onClose()
-    }
   }
 }
 
