@@ -7,7 +7,7 @@ import { getHasRated, getHasRatedError, getIsHasRatedLoading } from './rating'
 const CLOSED_PREF_REQUESTED = 'h5/modal/CLOSED_PREF_REQUESTED'
 const CLOSED_PREF_SUCCEEDED = 'h5/modal/CLOSED_PREF_SUCCEEDED'
 const CLOSED_PREF_FAILED = 'h5/modal/CLOSED_PREF_FAILED'
-const CLOSED = 'h5/modal/CLOSED'
+export const CLOSED = 'h5/modal/CLOSED'
 
 // Reducer
 const initialState = {
