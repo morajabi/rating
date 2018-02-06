@@ -15,6 +15,7 @@ This project is created by the awesome `create-react-app`.
 * **styled-components** for styling in a way that is component-based structure friendly and scalable
 
 > Note: I didn't disable logs, so it's easier to see what's happening for you when testing.
+
 > [2] Note: This project is not fully covered by tests, there are some basic tests as an example, only.
 
 ## How can we reduce bundle size?
