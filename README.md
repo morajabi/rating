@@ -18,6 +18,8 @@ This project is created by the awesome `create-react-app`.
 
 > [2] Note: This project is not fully covered by tests, there are some basic tests as an example, only.
 
+> API: This is the REST API used: https://api-fknaanjgow.now.sh If app is not responding, this might be the API on Now which went down because of inactivity.
+
 ## How can we reduce bundle size?
 
 Analyzing codebase, swapping dependencies, tweaking configs, reducing the bundle, validating result, and iterating this process can be a tedious task.
