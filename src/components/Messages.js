@@ -18,10 +18,10 @@ export const Message = styled.span`
   opacity: 0.8;
 `
 
-const WhatsUp = () => <Message>👋 What's up Michal?</Message>
-const HowAreYou = () => <Message>How are you Michal? 🙂</Message>
-const Thanks = () => <Message>Thanks for your time Michal! 🙏✨</Message>
-const Love = () => <Message>I ❤️ H5 and you</Message>
+const WhatsUp = () => <Message>👋 What's up Change?</Message>
+const HowAreYou = () => <Message>How are you? 🙂</Message>
+const Thanks = () => <Message>Thanks for your time! 🙏✨</Message>
+const Love = () => <Message>I ❤️ Change</Message>
 
 export const Loading = () => <Message>👀 Loading ...</Message>
 export const Error = () => (
