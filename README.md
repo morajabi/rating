@@ -1,6 +1,6 @@
 # H5 Rating
 
-This is an implemention of H5's rating modal that asks users how likely are they to recommend Hundred5 to their friends.
+This is an implemention of a rating modal that asks users how likely are they to recommend the product/app to their friends.
 
 ## Technologies Used
 
@@ -33,7 +33,7 @@ We can use the super useful `webpack-bundle-analyzer` to check all depenecies in
 
 With dynamic imports, we can either split code at the component-level or by routes (e.g. with react-router).
 
-Luckily, it's supported by CRA. For this small app, it was not necessary and we can't gain much from this method, but if it was a larger app (like H5 user panel) we could take advantage of this and dynamically import modules/chunks.
+Luckily, it's supported by CRA. For this small app, it was not necessary and we can't gain much from this method, but if it was a larger app (like a user panel) we could take advantage of this and dynamically import modules/chunks.
 
 ### 3. Tweak configs
 
