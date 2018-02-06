@@ -49,7 +49,7 @@ class Rate extends Component {
         <div
           role="radiogroup"
           aria-describedby="rate-modal-question"
-          aria-label="Rate Hundred5 from 0 to 10"
+          aria-label="Rate us from 0 to 10"
         >
           {this.numbers.map(num => (
             <StarRadio

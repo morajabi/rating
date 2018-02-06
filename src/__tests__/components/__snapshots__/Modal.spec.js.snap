@@ -3,7 +3,7 @@
 exports[`Modal renders as expected 1`] = `
 <styled.div>
   <styled.div
-    aria-label="Rate Hundred5"
+    aria-label="Rate us"
     aria-modal="true"
   >
     <styled.span
@@ -16,7 +16,7 @@ exports[`Modal renders as expected 1`] = `
     >
       How likely are you to recommend 
       <strong>
-        Hunderd5
+        TherePM
       </strong>
        to a friend or colleague?
     </styled.div>

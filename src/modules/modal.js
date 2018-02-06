@@ -4,10 +4,10 @@ import { createSelector } from 'reselect'
 import * as api from '../utils/api'
 import { getHasRated, getHasRatedError, getIsHasRatedLoading } from './rating'
 
-const CLOSED_PREF_REQUESTED = 'h5/modal/CLOSED_PREF_REQUESTED'
-const CLOSED_PREF_SUCCEEDED = 'h5/modal/CLOSED_PREF_SUCCEEDED'
-const CLOSED_PREF_FAILED = 'h5/modal/CLOSED_PREF_FAILED'
-export const CLOSED = 'h5/modal/CLOSED'
+const CLOSED_PREF_REQUESTED = 'rating/modal/CLOSED_PREF_REQUESTED'
+const CLOSED_PREF_SUCCEEDED = 'rating/modal/CLOSED_PREF_SUCCEEDED'
+const CLOSED_PREF_FAILED = 'rating/modal/CLOSED_PREF_FAILED'
+export const CLOSED = 'rating/modal/CLOSED'
 
 // Reducer
 const initialState = {

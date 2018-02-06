@@ -8,19 +8,20 @@ import { put, call, select, take } from 'redux-saga/effects'
 import { createSelector } from 'reselect'
 import * as api from '../utils/api'
 
-const RATING_CHANGED = 'h5/rate/RATING_CHANGED'
-const ACTIVE_RATE_CHANGED = 'h5/rate/ACTIVE_RATE_CHANGED'
-const ACTIVE_RATE_CHANGED_TO_RATING = 'h5/rate/ACTIVE_RATE_CHANGED_TO_RATING'
+const RATING_CHANGED = 'rating/rate/RATING_CHANGED'
+const ACTIVE_RATE_CHANGED = 'rating/rate/ACTIVE_RATE_CHANGED'
+const ACTIVE_RATE_CHANGED_TO_RATING =
+  'rating/rate/ACTIVE_RATE_CHANGED_TO_RATING'
 
 const RATING_CHANGED_AND_SUBMIT_REQUESTED =
-  'h5/rate/RATING_CHANGED_AND_SUBMIT_REQUESTED'
-const SUBMIT_REQUESTED = 'h5/rate/SUBMIT_REQUESTED'
-const SUBMIT_SUCCEEDED = 'h5/rate/SUBMIT_SUCCEEDED'
-const SUBMIT_FAILED = 'h5/rate/SUBMIT_FAILED'
+  'rating/rate/RATING_CHANGED_AND_SUBMIT_REQUESTED'
+const SUBMIT_REQUESTED = 'rating/rate/SUBMIT_REQUESTED'
+const SUBMIT_SUCCEEDED = 'rating/rate/SUBMIT_SUCCEEDED'
+const SUBMIT_FAILED = 'rating/rate/SUBMIT_FAILED'
 
-export const HAS_RATED_REQUESTED = 'h5/rate/HAS_RATED_REQUESTED'
-export const HAS_RATED_SUCCEEDED = 'h5/rate/HAS_RATED_SUCCEEDED'
-export const HAS_RATED_FAILED = 'h5/rate/HAS_RATED_FAILED'
+export const HAS_RATED_REQUESTED = 'rating/rate/HAS_RATED_REQUESTED'
+export const HAS_RATED_SUCCEEDED = 'rating/rate/HAS_RATED_SUCCEEDED'
+export const HAS_RATED_FAILED = 'rating/rate/HAS_RATED_FAILED'
 
 // Reducer
 export const initialState = {

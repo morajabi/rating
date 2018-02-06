@@ -25,13 +25,13 @@ class Modal extends Component {
 
     return (
       <Overlay>
-        <Wrapper aria-modal="true" aria-label="Rate Hundred5">
+        <Wrapper aria-modal="true" aria-label="Rate us">
           <CloseWrapper onClick={onClose}>
             <ModalCloseBtn />
           </CloseWrapper>
           <TopBar id="rate-modal-question">
-            How likely are you to recommend <strong>Hunderd5</strong> to a
-            friend or colleague?
+            How likely are you to recommend <strong>TherePM</strong> to a friend
+            or colleague?
           </TopBar>
           <Content>
             <Rate disabled={ratingDisabled} />

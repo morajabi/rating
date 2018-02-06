@@ -1,5 +1,5 @@
 {
-  "name": "h5-rating",
+  "name": "rating",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -33,9 +33,7 @@
     "trailingComma": "all"
   },
   "jest": {
-    "snapshotSerializers": [
-      "enzyme-to-json/serializer"
-    ]
+    "snapshotSerializers": ["enzyme-to-json/serializer"]
   },
   "scripts": {
     "start": "react-app-rewired start",
