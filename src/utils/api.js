@@ -1,7 +1,7 @@
 const getToken = () =>
   window && typeof localStorage !== 'undefined' && localStorage.getItem('token')
     ? localStorage.getItem('token')
-    : 'sample_token'
+    : 'sample_token_x'
 const apiBase = `https://api-fknaanjgow.now.sh`
 const getHeaders = () => ({
   Authorization: `Bearer ${getToken()}`,
