@@ -1,4 +1,4 @@
-# H5 Rating
+# Rating Modal
 
 This is an implemention of a rating modal that asks users how likely are they to recommend the product/app to their friends. _Note: The modal only opens if user hasn't rated nor closed the modal before, as it's the real world behaviour. Otherwise, you can start a new session with the top left button._
 
@@ -7,6 +7,7 @@ This is an implemention of a rating modal that asks users how likely are they to
 This project is created by the awesome `create-react-app`.
 
 * **React**
+* **Jest** as a testing framework (it's pre-installed with react-scripts) together with **Enzyme** and **redux-saga-tester** for more efficient saga testing [2]
 * **Redux** with duck/modules style structure for better scaling
 * **Redux-Saga** for handling async redux actions
 * **Reselect** for scalable and performant access to redux state
@@ -14,6 +15,7 @@ This project is created by the awesome `create-react-app`.
 * **styled-components** for styling in a way that is component-based structure friendly and scalable
 
 > Note: I didn't disable logs, so it's easier to see what's happening for you when testing.
+> [2] Note: This project is not fully covered by tests, there are some basic tests as an example, only.
 
 ## How can we reduce bundle size?
 
