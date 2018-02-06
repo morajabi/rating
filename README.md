@@ -1,6 +1,6 @@
 # H5 Rating
 
-This is an implemention of a rating modal that asks users how likely are they to recommend the product/app to their friends.
+This is an implemention of a rating modal that asks users how likely are they to recommend the product/app to their friends. _Note: The modal only opens if user hasn't rated nor closed the modal before, as it's the real world behaviour. Otherwise, you can start a new session with the top left button._
 
 ## Technologies Used
 
