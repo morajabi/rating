@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react'
 import { connect } from 'react-redux'
 
 import Modal from '../components/Modal'
+import TokenRefresh from '../components/TokenRefresh'
 import { Loading, Error, RandomMessage } from '../components/Messages'
 import { requestHasRated, getIsSubmitLoading } from '../modules/rating'
 import {
@@ -41,6 +42,8 @@ class App extends Component {
         {isModalOpen && (
           <Modal onClose={this.modalClosed} ratingDisabled={isSubmitLoading} />
         )}
+
+        <TokenRefresh />
       </Fragment>
     )
   }
